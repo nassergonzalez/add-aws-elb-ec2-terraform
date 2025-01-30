@@ -23,7 +23,7 @@
 data "aws_ami" "amazon_ami" {
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-2.0.20220606.1-x86_64-gp2"]
+    values = ["amzn2-ami-amd-hvm-2.0.20240916.0-x86_64-gp2"]
   }
   filter {
     name   = "virtualization-type"
