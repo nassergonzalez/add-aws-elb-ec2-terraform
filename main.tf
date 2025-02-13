@@ -1,3 +1,21 @@
+# Create an IAM role
+resource "aws_iam_role" "s3_viewer_role" {
+  name = "s3-viewer-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "ec2.amazonaws.com" # Adjust the service as needed (e.g., lambda.amazonaws.com for Lambda)
+        }
+      }
+    ]
+  })
+}
+
 # https://docs.aws.amazon.com/glue/latest/dg/set-up-vpc-dns.html
 resource "aws_vpc" "this" {
   cidr_block = "10.20.20.0/26"
